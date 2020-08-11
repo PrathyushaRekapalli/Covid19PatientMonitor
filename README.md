@@ -35,7 +35,7 @@ You will need
 <ul>
 <li>HTML 5, CSS 3, Node - to run React JS</li>
 <li>Java JRE to run the backend server and REST API</li>
-<li>MY SQL versions 8.0.21</li>
+<li>MY SQL version 8.0.21</li>
 </ul>
 
 
