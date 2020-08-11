@@ -1,0 +1,254 @@
+body {
+  overflow: auto;
+}
+
+/* Doctor ui  begins*/
+.alert_box_title {
+  background-color: #4682b4;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.alert_box {
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 450px;
+  max-height: 200px;
+  /*screen width = 1520px */
+  width: 600px;
+  padding: 2px 2px 2px 2px;
+  border: 5px solid none;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.patient_box_title {
+  background-color: #4682b4;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.patient_box {
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 450px;
+  min-height: 50px;
+  width: 600px;
+  padding: 2px 2px 2px 2px;
+  /* border: 5px solid black; */
+  border-radius: 5px;
+  background-color: none;
+}
+
+.patient_box_title .down,
+.alert_box_title .down {
+  position: relative;
+  left: 40px;
+}
+.patient_box_title .up,
+.alert_box_title .up {
+  position: relative;
+  left: 50px;
+}
+
+.patients span {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  height: 60px;
+  padding: 15px;
+  box-sizing: border-box;
+  border: 5px solid #4682b4;
+  border-radius: 5px;
+  border-style: ridge;
+  background-color: azure;
+}
+/* Doctor ui  ends*/
+
+/* Patient ui  begins*/
+
+.patient_home {
+  display: block;
+  box-sizing: border-box;
+  border: 5px solid none;
+  padding: 15px;
+  font-family: "sans-serif";
+}
+.patient_home h2 {
+  color: #4682b4;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 36px;
+  margin: 20 0 24px;
+  text-align: center;
+}
+.patient_home p {
+  color: rgb(90, 140, 182);
+  font-family: "Enriqueta", arial, serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 50px 0 24px;
+  text-align: center;
+}
+
+#health {
+  color: #4682b4;
+  font-family: "Raleway", sans-serif;
+  font-size: 45px;
+  font-weight: normal;
+  position: relative;
+  top: 100px;
+  left: 380px;
+}
+
+/* Patient ui ends */
+
+/* Admin ui begins */
+
+/* .MuiToolbar-root {
+  background-color: black;
+  color:white;
+} */
+
+.docpat {
+  margin-top: 100px;
+  margin-left: 200px;
+  width: 1100px;
+}
+/* Admin ui ends */
+
+/* home page begins*/
+.mainhome {
+  background-image: url(../images/homebg8.png);
+  background-size: 1540px 720px;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-color: #b3b0b8;
+}
+.heading {
+  color: #0e427ed5;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+  margin-top: 30px;
+}
+.description {
+  color: #305783f8;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 25px;
+  line-height: 24px;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-top: 60px;
+  border: 5px none;
+  margin-left: 100px;
+  margin-right: 300px;
+}
+.profiles {
+  color: #305783f8;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 25px;
+  line-height: 24px;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-top: 110px;
+  margin-left: 200px;
+}
+.signin {
+  color: #305783f8;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  border: 5px solid none;
+  box-sizing: border-box;
+  padding: 2px;
+  position: absolute;
+  left: 200px;
+  top: 350px;
+  width: 300px;
+}
+.signup {
+  color: #305783f8;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  border: 5px solid none;
+  box-sizing: border-box;
+  padding: 2px;
+  position: absolute;
+  right: 400px;
+  top: 350px;
+  width: 300px;
+}
+
+/* home page ends*/
+#logout_btn {
+  margin-top: 400px;
+  margin-left: 50px;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* For login/signup buttons */
+.in {
+  box-shadow: 0px 10px 14px -7px #084a54;
+  background: linear-gradient(to bottom, #0b1214 5%, #65b5bf 100%);
+  background-color: #0b1214;
+  border-radius: 8px;
+  display: inline-block;
+  cursor: pointer;
+  color: #edf0f2;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 11px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #239ac2;
+}
+.in:hover {
+  background: linear-gradient(to bottom, #65b5bf 5%, #0b1214 100%);
+  background-color: #65b5bf;
+}
+.in:active {
+  position: relative;
+  top: 1px;
+}
+
+/* for buttons in all the uis */
+#lay {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #5e84d6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+  margin-bottom: 15px;
+}
+
+#lay:active {
+  background: linear-gradient(to bottom, #5e84d6 5%, #ffffff 100%);
+  background-color: #5e84d6;
+}
+
+#lay:hover {
+  position: relative;
+  top: 1px;
+}
