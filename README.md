@@ -35,15 +35,15 @@ You will need
 <ul>
 <li>HTML 5, CSS 3, Node - to run React JS</li>
 <li>Java JRE to run the backend server and REST API</li>
-<li>MY SQL versions 8.0.21</li>
+<li>MY SQL version 8.0.21</li>
 </ul>
 
 
 
 ## RUN
-Uncomment the local host url in react/src/App.js, and remove the currently set url (check lines 18,19)
-
 Use <code>npm start</code> to start the application
+
+(You can change the host url in react/src/App.js Line 18)
 
 Hits:
 [![HitCount](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor.svg)](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor)

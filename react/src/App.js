@@ -15,8 +15,8 @@ import "./styles/App.css";
 class App extends Component {
   //set host url here
 
-  // url ="http://localhost:8080/"
-  url = "http://5568c4f5b922.ngrok.io/";
+ url ="http://localhost:8080/";
+  
   render() {
     return (
       <div className="App">
