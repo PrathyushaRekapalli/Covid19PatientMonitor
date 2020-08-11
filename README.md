@@ -8,7 +8,7 @@ would be sent to the doctors monitoring  said patients.
 Frontend implemented using HTML,CSS, and React JS
 Backend implemented using a Java REST API and ofcourse an SQL database
 
-##User Profiles
+## USER PROFILES
 Includes separate UI modules for :
 <ul>
 <li>Patient</li>
@@ -16,7 +16,7 @@ Includes separate UI modules for :
 <li>Admin</li>
 </ul>
 
-##User Profile Description
+## USER PROFILE DESCRIPTION
 <p>
 Patients must sign up, and once they are registered by a doctor or administrator they can view their vital health information through the patient portal.
 Doctors are registered under the admin portal. They can :
