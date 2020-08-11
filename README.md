@@ -41,9 +41,9 @@ You will need
 
 
 ## RUN
-Uncomment the local host url in react/src/App.js, and remove the currently set url (check lines 18,19)
-
 Use <code>npm start</code> to start the application
+
+(You can change the host url in react/src/App.js Line 18)
 
 Hits:
 [![HitCount](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor.svg)](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor)
