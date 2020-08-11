@@ -28,6 +28,14 @@ Doctors are registered under the admin portal. They can :
 </ul>
 Administrators for the sake of this simulation are assumed to already have accounts created
 They are capable of adding,updating or deleting both patient and doctor profiles
+<br>
+Administrator Information:
+<ul>
+<li>id: ADMIN123</li>
+<li>Name : admin</li>
+<li>email : admin@admin.com</li>
+<li>password: admin@123</li>
+</ul>
 </p>
 
 ## SETUP
@@ -43,19 +51,22 @@ You will need
 
 
 ## RUN
+**Application**<br>
 Use <code>npm start</code> to start the application
 
 (You can change the host url in react/src/App.js Line 18)
-
-
+<br>
+<br>
+**Server**<br>
 Open Eclipse IDE under the workspace "Covid19PatientMonitor/java":
 
-Run Project covid19_patient_monitor on server (Apache Tomcat 8.5) by Right-clicking covid19_patient_monitor > Run As > Run On Server
+<ul>
+<li>Run Project covid19_patient_monitor on server (Apache Tomcat 8.5) by Right-clicking covid19_patient_monitor > Run As > Run On Server </li>
 
-Run Simulation by going to Project Simulation/Java Resources/src/test and Right-clicking test.java> Run As > Java Application
-(Run Simulation only after three patients have been registered under doctor)
-
-
+<li>Run Simulation by going to Project Simulation/Java Resources/src/test and Right-clicking test.java> Run As > Java Application
+(Run Simulation only after three patients have been registered under doctor)</li>
+<ul>
+<br>
 Hits:
 [![HitCount](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor.svg)](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor)
 
