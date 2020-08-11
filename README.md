@@ -27,13 +27,13 @@ Doctors are registered under the admin portal. They can :
 <li>View patient health fluctuation alerts (if any), under the alerts tab</li>
 </ul>
 Administrators for the sake of this simulation are assumed to already have accounts created
-They are capable of adding,updating or deleting both patient and doctor profiles
-<br>
-Administrator Information:
+They are capable of adding,updating or deleting both patient and doctor profiles <br><br>
+
+**Administrator Information:**
 <ul>
 <li>id: ADMIN123</li>
-<li>Name : admin</li>
-<li>email : admin@admin.com</li>
+<li>Name: admin</li>
+<li>email: admin@admin.com</li>
 <li>password: admin@123</li>
 </ul>
 </p>
