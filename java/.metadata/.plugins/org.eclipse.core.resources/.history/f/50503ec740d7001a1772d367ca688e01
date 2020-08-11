@@ -1,0 +1,99 @@
+package test;
+
+import java.sql.*;
+
+import org.json.simple.JSONObject;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.Application;
+
+public class Patient {
+    int patientId;
+    String name,address,email,phone,sex,guardianName;
+    int age,height, weight;
+    Vitals vitals;
+    
+    Driver driver = new Driver();
+    
+    public Patient(int patientId,String name,String address,String email,String phone,String sex,String guardianName,int age,int height, int weight, Vitals v){
+        
+        this.patientId = patientId;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.sex = sex;
+        this.guardianName = guardianName;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.vitals = new Vitals(v);
+       
+    }
+    
+    JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+        
+        obj.put("p_id", patientId);
+        obj.put("p_name", name);
+        obj.put("p_addr", address);
+        obj.put("p_email", email);
+        obj.put("p_phone", phone);
+        obj.put("p_sex", sex);
+        obj.put("p_guardian", guardianName);
+        obj.put("p_age", age);
+        obj.put("p_ht", height);
+        obj.put("p_wt", weight);
+        
+        return obj;
+    }
+    
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+    public String getDoctorInfo(@QueryParam("p_id") String p_id) {
+    	
+    	JSONObject obj = new JSONObject();
+    	
+    	
+    	try {
+    		
+    		Connection con = driver.connectDb();
+    		
+    		Statement stmt = con.createStatement();
+    		
+    		ResultSet doctor_rs = stmt.executeQuery("SELECT * FROM PATIENT WHERE patientId ="+p_id);
+    		
+    		doctor_rs.next();
+    		
+    		obj.put("d_id",doctor_rs.getString("doctorId"));
+    		obj.put("d_name",doctor_rs.getString("name"));
+    		obj.put("h_name",doctor_rs.getString("hospitalName"));
+    		obj.put("phone",doctor_rs.getString("phone"));
+    		obj.put("h_info",doctor_rs.getString("hospitalInfo"));
+    		
+    		JSONObject p_obj = new JSONObject();
+    		
+    		ResultSet patient_rs = stmt.executeQuery("SELECT * FROM PATIENT WHERE doctorId ="+p_id);
+    	
+    		while(patient_rs.next()) {    			
+    			p_obj.put(patient_rs.getString("patientId"),patient_rs.getString("name"));
+    		}
+    		con.close();
+    		obj.put("patients",p_obj);
+    	}
+    	catch(Exception e) {
+    		obj.clear();
+    		obj.put("error", e.toString()+" (or) Check Doctor ID");
+    		System.out.println(e.toString());
+    	}
+    	
+    	return obj.toString();
+    }
+}

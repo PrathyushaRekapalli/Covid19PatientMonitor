@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;covid19_patient_monitor_client&apos;" deleteContents="false" description="Delete resource &apos;covid19_patient_monitor_client&apos;" element1="/covid19_patient_monitor_client" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1597043771947"/>&#x0A;<refactoring comment="Rename resource &apos;Client_covid19PM&apos; to &apos;Simulation&apos;" description="Rename resource &apos;Client_covid19PM&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Client_covid19PM" name="Simulation" stamp="1597126219625" updateReferences="true"/>
+</session>

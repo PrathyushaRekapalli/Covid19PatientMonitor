@@ -1,0 +1,26 @@
+package test;
+
+public class Doctor {
+    
+    int doctorId,hospitalId;
+    String name,hospitalName,hospitalInfo,email;
+    
+    public Doctor(int doctorId,int hospitalId,String name,String hospitalName,String hospitalInfo,String email){
+        this.doctorId = doctorId;
+        this.hospitalId = hospitalId;
+        this.name = name;
+        this.hospitalName = hospitalName;
+        this.hospitalInfo = hospitalInfo;
+        this.email = email;
+    }
+    
+
+    public Doctor(Doctor d){
+        this.doctorId = d.doctorId;
+        this.hospitalId = d.hospitalId;
+        this.name = d.name;
+        this.hospitalName = d.hospitalName;
+        this.hospitalInfo = d.hospitalInfo;
+        this.email = d.email;
+    }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+<fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+<fullyQualifiedTypeName name="javax.ws.rs.ApplicationPath"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Application"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="javax.ws.rs.QueryParam"/>
+<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
+<fullyQualifiedTypeName name="java.math.BigDecimal"/>
+<fullyQualifiedTypeName name="test.UniqueId"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.ws.rs.client.Client"/>
+<fullyQualifiedTypeName name="javax.ws.rs.client.ClientBuilder"/>
+<fullyQualifiedTypeName name="javax.ws.rs.client.WebTarget"/>
+<fullyQualifiedTypeName name="javax.ws.rs.client.Invocation"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
+<fullyQualifiedTypeName name="org.glassfish.jersey.client.ClientConfig"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.stream.Entity"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.stream.Entity.ExternalEntity"/>
+<fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.ws.rs.client.Entity"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+</qualifiedTypeNameHistroy>

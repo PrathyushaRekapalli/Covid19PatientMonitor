@@ -1,0 +1,130 @@
+package test;
+
+import java.net.URI;
+import java.sql.*;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import org.json.simple.JSONObject;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import org.glassfish.jersey.client.ClientConfig;
+
+public class Test {
+
+    /**
+     * @param obj
+     */
+    /**
+     * @param obj
+     */
+    public static void postVitals(JSONObject obj) {
+        ClientConfig config = new ClientConfig();
+
+        Client client = ClientBuilder.newClient(config);
+
+        WebTarget target = client.target(getBaseURI());
+                            
+
+        Object resp=
+                target.path("patient_vitals").request().post(Entity.entity(obj, MediaType.APPLICATION_JSON));
+        
+
+        //System.out.println(resp);
+    }
+
+    private static URI getBaseURI() {
+        return UriBuilder.fromUri("http://localhost:8080/covid19_patient_monitor").build();
+    }
+    
+    public static void main(String[] args) {
+    	
+    	JSONObject critical_obj = new JSONObject();
+    	JSONObject critical_obj1 = new JSONObject();
+    	JSONObject normal_obj = new JSONObject();
+    	
+    	normal_obj.put("temperature", "97.0");
+    	normal_obj.put("bloodPressure", "80.0");
+    	normal_obj.put("respiratoryRate", "15.5");
+    	normal_obj.put("heartRate", "63.3");
+    	normal_obj.put("spO2","98.2");
+    	
+    	critical_obj.put("temperature", "97.0");
+    	critical_obj.put("bloodPressure", "80.0");
+    	critical_obj.put("respiratoryRate", "7.5");
+    	critical_obj.put("heartRate", "63.3");
+    	critical_obj.put("spO2","92.1");
+    	
+    	critical_obj1.put("temperature", "102.3");
+    	critical_obj1.put("bloodPressure", "161.0");
+    	critical_obj1.put("respiratoryRate", "7.5");
+    	critical_obj1.put("heartRate", "63.3");
+    	critical_obj1.put("spO2","90");
+    	
+    	int number_of_vitals=5;
+    	
+    	try {
+    		
+    		Driver driver = new Driver();
+    		
+    		Connection con = driver.connectDb();
+    		Statement stmt = con.createStatement();
+    		
+    		ArrayList p_id = new ArrayList();
+    		
+    		ResultSet rs = stmt.executeQuery("SELECT patientId FROM PATIENT");
+    		
+    		
+    		
+    		while(rs.next()) {
+    			
+    			p_id.add(rs.getString("patientId"));
+    		}
+	    	
+    		int count =0;
+    		for(int j=0; j<number_of_vitals; j++) {
+    			
+    	    	for(int i=0; i < p_id.size();i++) {
+    	    		
+    	    		
+    	    		
+    	    		if(i<2 && j>= number_of_vitals-3) {
+    	    			 //last 3 vitals of first 2 patients will be simulated to be critical
+    	    			if(count<2) {
+    	    				System.out.println(p_id.get(i)+" c");
+    	    				count++;
+    	    			}
+    	    			else {
+    	    				System.out.println(p_id.get(i)+" c1");
+    	    			}
+    	    			
+    	    		}
+    	    		else {
+    	    			System.out.println(p_id.get(i)+" normal");
+    	    		}
+    	    		
+    	    	}
+    	    //	count++;
+    	    	System.out.println("\n");
+
+    		}
+	    	
+    		normal_obj.put("patientId",p_id.get(0));
+	    	postVitals(normal_obj);
+	    	TimeUnit.SECONDS.sleep(10);
+	    	normal_obj.put("patientId",p_id.get(1));
+	    	postVitals(normal_obj);
+	    	
+	    	
+    	}
+    	catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+}

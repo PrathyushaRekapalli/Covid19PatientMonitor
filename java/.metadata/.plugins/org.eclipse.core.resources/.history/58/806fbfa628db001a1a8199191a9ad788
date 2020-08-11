@@ -1,0 +1,91 @@
+package test;
+
+import java.net.URI;
+import java.sql.*;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import org.json.simple.JSONObject;
+import java.util.ArrayList;
+import org.glassfish.jersey.client.ClientConfig;
+
+public class Test {
+
+    /**
+     * @param obj
+     */
+    /**
+     * @param obj
+     */
+    public static void postVitals(JSONObject obj) {
+        ClientConfig config = new ClientConfig();
+
+        Client client = ClientBuilder.newClient(config);
+
+        WebTarget target = client.target(getBaseURI());
+                            
+
+        Object resp=
+                target.path("patient_vitals").request().post(Entity.entity(obj, MediaType.APPLICATION_JSON));
+        
+
+        //System.out.println(resp);
+    }
+
+    private static URI getBaseURI() {
+        return UriBuilder.fromUri("http://localhost:8080/covid19_patient_monitor").build();
+    }
+    
+    public static void main(String[] args) {
+    	
+    	try {
+    		
+    		Driver driver = new Driver();
+    		
+    		Connection con = driver.connectDb();
+    		Statement stmt = con.createStatement();
+    		
+    		ArrayList p_id = new ArrayList();
+    		
+    		ResultSet rs = stmt.executeQuery("SELECT patientId FROM PATIENT");
+    		
+    		while(rs.next()) {
+    			
+    			p_id.add(rs.getString("patientId"));
+    		}
+    		
+	    	JSONObject critical_obj = new JSONObject();
+	    	JSONObject critical_obj1 = new JSONObject();
+	    	JSONObject normal_obj = new JSONObject();
+	    	
+	    	
+	    	for(int i=0; i < p_id.size();i++) {
+	    		System.out.println(p_id.get(i));
+	    	}
+	    	p_id.add("789");
+	    	
+	    	critical_obj.put("patientId", "123");
+	    	critical_obj.put("temperature", "97.0");
+	    	critical_obj.put("bloodPressure", "80.0");
+	    	critical_obj.put("respiratoryRate", "7.5");
+	    	critical_obj.put("heartRate", "63.3");
+	    	critical_obj.put("spO2","92.1");
+	    	
+	    	critical_obj1.put("temperature", "95.0");
+	    	critical_obj1.put("bloodPressure", "161.0");
+	    	critical_obj1.put("respiratoryRate", "7.5");
+	    	critical_obj1.put("heartRate", "63.3");
+	    	critical_obj1.put("spO2","49");
+	    	
+	    	//postVitals(critical_obj);
+    	}
+    	catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+}

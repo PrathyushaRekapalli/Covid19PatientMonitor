@@ -1,0 +1,46 @@
+package test;
+
+import org.json.simple.JSONObject;
+
+public class Patient {
+    int patientId;
+    String name,address,email,phone,sex,guardianName;
+    int age,height, weight;
+    Vitals vitals;
+    
+    
+    public Patient(int patientId,String name,String address,String email,String phone,String sex,String guardianName,int age,int height, int weight, Vitals v){
+        
+        this.patientId = patientId;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.sex = sex;
+        this.guardianName = guardianName;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.vitals = new Vitals(v);
+       
+    }
+    
+    JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+        
+        obj.put("p_id", patientId);
+        obj.put("p_name", name);
+        obj.put("p_addr", address);
+        obj.put("p_email", email);
+        obj.put("p_phone", phone);
+        obj.put("p_sex", sex);
+        obj.put("p_guardian", guardianName);
+        obj.put("p_age", age);
+        obj.put("p_ht", height);
+        obj.put("p_wt", weight);
+        
+        return obj;
+    }
+    
+
+}

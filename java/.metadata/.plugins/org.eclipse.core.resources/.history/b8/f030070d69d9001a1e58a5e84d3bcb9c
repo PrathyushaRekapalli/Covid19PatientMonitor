@@ -1,0 +1,96 @@
+package test;
+
+import org.json.simple.JSONObject;
+
+import java.sql.*;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import java.util.UUID;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.Application;
+
+@Path("/doctor_signup")
+public class DoctorSignUp {
+	
+	Driver driver = new Driver();
+	
+	public static String createUniqueId() {
+		
+		String id;
+
+		UUID uniqueKey = UUID.randomUUID();
+		System.out.println (uniqueKey.variant());
+  
+		/*
+		Connection con = driver.connectDb();
+		
+		Statement stmt = con.createStatement();
+		
+		ResultSet doctor_rs = stmt.executeQuery("SELECT * FROM USER WHERE email ="+email+" or phone = "+phone);
+		*/
+		
+		return "123";
+	}
+	
+	public static void main(String[] args) {
+		
+		createUniqueId();
+	}
+	
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String login(JSONObject obj) {
+    	
+    	JSONObject r_obj = new JSONObject();
+    	
+    	String email = (String) obj.get("email");
+    	String password = (String) obj.get("password");
+    	String name = (String) obj.get("name");
+    	String phone = (String) obj.get("phone");
+    	String hospitalInfo = (String) obj.get("hospitalInfo");
+    	String hospitalName = (String) obj.get("hospitalName");
+    	
+    	try {
+    		
+    		Connection con = driver.connectDb();
+    		
+    		Statement stmt = con.createStatement();
+    		
+    		ResultSet doctor_rs = stmt.executeQuery("SELECT * FROM DOCTOR WHERE email ="+email+" or phone = "+phone);
+    		
+    		if(!doctor_rs.next()) {
+    			
+	            String sql_query = "INSERT INTO DOCTOR(patientId,name,address,email,phone,sex,guardianName,age,height,weight,doctorId)" + 
+	            		" VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+	           /*
+	            PreparedStatement preparedStmt = con.prepareStatement(sql_query);
+	            preparedStmt.setString (1, patientId);
+	            preparedStmt.setString (2, name);
+	            preparedStmt.setString (3, address);
+	            preparedStmt.setString (4, email);
+	            preparedStmt.setString (5, phone);
+	            preparedStmt.setString (6, sex);
+	            preparedStmt.setString (7, guardianName);
+	            preparedStmt.setString (8, age);
+	            preparedStmt.setString (9, height);
+	            preparedStmt.setString (10, weight);
+	            preparedStmt.setString (11, doctorId);
+	            */
+    		}
+    		else {
+    			r_obj.put("error","Email (or) Phone Number Taken");
+    		}
+    		con.close();
+    	}
+    	catch(Exception e) {
+    		r_obj.clear();
+    		r_obj.put("error",e.toString()+" (or) Check Details");
+    		e.printStackTrace();
+    	}
+    	
+    	return r_obj.toString();
+    }
+}

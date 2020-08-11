@@ -1,0 +1,98 @@
+package test;
+
+import java.math.BigDecimal;
+import java.sql.*;
+
+import org.json.simple.JSONObject;
+import java.sql.Timestamp;  
+import java.time.Instant; 
+
+public class Vitals {
+    
+    String temperature,bloodPressure,respiratoryRate,heartRate,spO2;
+    String patientId;
+    Driver driver;
+    
+    
+    public Vitals(Vitals v){
+        this.temperature = v.temperature;
+        this.bloodPressure = v.bloodPressure;
+        this.respiratoryRate = v.respiratoryRate;
+        this.heartRate = v.heartRate;
+        this.spO2 = v.spO2;
+        driver = new Driver();
+    }
+    
+    public Vitals(JSONObject obj) {
+        this.temperature = (String) obj.get("temperature");
+        this.bloodPressure = (String) obj.get("bloodPressure");
+        this.respiratoryRate = (String) obj.get("respiratoryRate");
+        this.heartRate =  (String) obj.get("heartRate");
+        this.spO2 = (String) obj.get("spO2");
+        this.patientId = (String) obj.get("patientId");
+        this.driver = new Driver();
+    }
+    
+    public void store() throws Exception{
+    	
+    	
+    	String c = critical();
+    	int isCritical=0;
+    	String message = "";
+    	
+    	if(!c.equals("")) {
+    		isCritical=1;
+    		message = c;
+    	}
+    	
+    	Timestamp instant= Timestamp.from(Instant.now()); 
+
+    	try {
+    		Connection con = driver.connectDb();
+    		
+    		
+    		String sql_query = "INSERT INTO VITALS (patientId,time,temperature,bloodPressure,respiratoryRate,heartRate,spO2,isCritical,message)" + 
+            		" VALUES (?,?,?,?,?,?,?,?,?)";
+    		PreparedStatement preparedStmt = con.prepareStatement(sql_query);
+    		
+    		preparedStmt.setString (1, patientId);
+    		preparedStmt.setString (2, instant.toString());
+    		preparedStmt.setDouble(3, temperature);
+    		preparedStmt.setDouble(4, bloodPressure);
+    		preparedStmt.setDouble (5, respiratoryRate);
+    		preparedStmt.setDouble (6, heartRate);
+    		preparedStmt.setDouble (7, spO2);
+    		preparedStmt.setInt(8, isCritical);
+    		preparedStmt.setString (9, message);
+    		
+    		preparedStmt.execute();
+    		con.close();
+    	}
+    	catch(Exception e) {
+    		throw(e);
+    	}
+    }
+    
+    String critical(){
+        //critical message = "" when vitals are normal
+        String criticalMessage="";
+        
+        if(this.temperature < "36.1" || this.temperature > "37.9"){
+            criticalMessage += "Abnormal Temperature: "+this.temperature+"\n";
+        }
+        if(this.bloodPressure < "60" || this.bloodPressure > "160"){
+            criticalMessage += "Abnormal Blood Pressure: "+this.bloodPressure+"\n";
+        }
+        if(this.respiratoryRate < "9" || this.respiratoryRate > "20"){
+            criticalMessage += "Abnormal Respiratory Rate: "+this.respiratoryRate+"\n";
+        }
+        if(this.heartRate < "50" || this.heartRate > "100"){
+            criticalMessage += "Abnormal Heart Rate: "+this.heartRate+"\n";
+        }
+        if(this.spO2 < "93"){
+            criticalMessage += "Abnormal SpO2: "+this.spO2+"\n";
+        }
+        
+        return criticalMessage;
+    }
+}

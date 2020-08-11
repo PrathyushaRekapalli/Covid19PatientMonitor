@@ -1,0 +1,55 @@
+package test;
+
+import java.net.URI;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import org.json.simple.JSONObject;
+import java.util.ArrayList;
+import org.glassfish.jersey.client.ClientConfig;
+
+public class Test {
+
+    public static void postVitals(String obj) {
+        ClientConfig config = new ClientConfig();
+
+        Client client = ClientBuilder.newClient(config);
+
+        WebTarget target = client.target(getBaseURI());
+                            
+
+        String resp=
+                target.path("").request().post(Entity.entity(obj, MediaType.APPLICATION_JSON)).toString();
+        
+
+        System.out.println(resp);
+    }
+
+    private static URI getBaseURI() {
+        return UriBuilder.fromUri("http://localhost:8080/covid19_patient_monitor").build();
+    }
+    
+    public static void main(String[] args) {
+    	
+    	JSONObject critical_obj = new JSONObject();
+    	JSONObject normal_obj = new JSONObject();
+    	
+    	ArrayList p_id = new ArrayList();
+    	
+    	p_id.add("789");
+    	
+    	critical_obj.put("patientId", "789");
+    	critical_obj.put("temperature", "37.0");
+    	critical_obj.put("bloodPressure", "80.0");
+    	critical_obj.put("respiratoryRate", "7.5");
+    	critical_obj.put("heartRate", "60.0");
+    	critical_obj.put("spO2","92.0");
+    	
+    	postVitals(critical_obj.toString());
+    }
+}
