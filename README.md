@@ -65,8 +65,8 @@ Open Eclipse IDE under the workspace "Covid19PatientMonitor/java":
 
 <li>Run Simulation by going to Project Simulation/Java Resources/src/test and Right-clicking test.java> Run As > Java Application
 (Run Simulation only after three patients have been registered under doctor)</li>
-<ul>
-<br>
+</ul>
+
 Hits:
 [![HitCount](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor.svg)](http://hits.dwyl.com/Sumo-99/Covid19PatientMonitor)
 
